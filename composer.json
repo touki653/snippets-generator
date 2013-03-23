@@ -1,0 +1,18 @@
+{
+    "name": "touki/snippets-generator",
+    "type": "library",
+    "description": "PHP Snippets Generator",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Guillaume Vincendon",
+            "email": "g.vincendon@vithemis.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": { "Touki\\SnippetsGenerator": "src/" }
+    }
+}
