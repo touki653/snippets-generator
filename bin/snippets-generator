@@ -1,2 +1,19 @@
 #!/usr/bin/env php
 <?php
+
+error_reporting(E_ALL);
+
+require(__DIR__.'/../vendor/autoload.php');
+
+use Touki\SnippetsGenerator\Command;
+use Touki\SnippetsGenerator\Helper\ImprovedDialogHelper;
+use Symfony\Component\Console\Application;
+
+$commands = array(
+    new Command\GetSetCommand
+);
+
+$application = new Application('PHP Snippets Generator', '1.0.0');
+$application->addCommands($commands);
+$application->getHelperSet()->set(new ImprovedDialogHelper, 'impdialog');
+$application->run();

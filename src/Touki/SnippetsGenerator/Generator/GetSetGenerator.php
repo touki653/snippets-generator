@@ -45,7 +45,7 @@ class GetSetGenerator extends AbstractGenerator
             $this->_writeLine(sprintf('return $this->%s;', $prop), 2);
             $this->_writeLine('}', 1, 2);
 
-            $this->_writeLine(sprintf("public function set%s(\$%s)", $camelized, $prop), 1);
+            $this->_writeLine(sprintf('public function set%s($%s)', $camelized, $prop), 1);
             $this->_writeLine('{', 1);
             $this->_writeLine(sprintf('$this->%s = $%s;', $prop, $prop), 2, 2);
             $this->_writeLine('return $this;', 2);
