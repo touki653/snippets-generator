@@ -5,6 +5,7 @@ namespace Touki\SnippetsGenerator\Generator\Phar;
 use Touki\SnippetsGenerator\Generator\Generator;
 use Touki\SnippetsGenerator\Configuration\PharConfiguration;
 use Touki\SnippetsGenerator\Exception\BadMethodCallException;
+use Touki\SnippetsGenerator\Exception\InvalidArgumentException;
 use Symfony\Component\Finder\Finder;
 
 class PharGenerator extends Generator
@@ -21,6 +22,11 @@ class PharGenerator extends Generator
         }
 
         $executable = $config['executable'];
+
+        if (!file_exists($executable)) {
+            throw new InvalidArgumentException(sprintf("File '%s' could not be found", $executable));
+        }
+
         $pharFile = str_replace('.php', '.phar', $executable).'.phar';
 
         if (file_exists($pharFile)) {
@@ -51,6 +57,8 @@ class PharGenerator extends Generator
         $phar->stopBuffering();
 
         chmod($pharFile, 0777);
+
+        return $pharFile;
     }
 
     private function getExecutable($executable)
