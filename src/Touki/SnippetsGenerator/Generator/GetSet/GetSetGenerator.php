@@ -17,7 +17,7 @@ class GetSetGenerator extends Generator
 
     public function generate()
     {
-        if (!$config = $this->getConfig()) {
+        if (null === $config = $this->getConfig()) {
             throw new BadMethodCallException("Cannot generate getset, configuration has not been set");
         }
 

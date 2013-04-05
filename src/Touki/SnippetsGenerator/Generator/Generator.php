@@ -6,7 +6,7 @@ use Symfony\Component\Config\Definition\Processor;
 
 abstract class Generator
 {
-    protected $config;
+    protected $config = null;
 
     abstract protected function getConfigurator();
 
@@ -35,5 +35,10 @@ abstract class Generator
     public function getConfig()
     {
         return $this->getConfiguration();
+    }
+
+    public function getConfigItem($key)
+    {
+        return array_key_exists($key, $this->config) ? $this->config[$key] : null;
     }
 }
