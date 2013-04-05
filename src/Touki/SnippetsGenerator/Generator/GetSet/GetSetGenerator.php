@@ -1,11 +1,12 @@
 <?php
 
-namespace Touki\SnippetsGenerator\Generator;
+namespace Touki\SnippetsGenerator\Generator\GetSet;
 
+use Touki\SnippetsGenerator\Generator\Generator;
 use Touki\SnippetsGenerator\Configuration\GetSetConfiguration;
 use Touki\SnippetsGenerator\Exception\BadMethodCallException;
 
-class GetSetGenerator extends AbstractGenerator
+class GetSetGenerator extends Generator
 {
     private $template;
 

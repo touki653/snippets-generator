@@ -1,15 +1,15 @@
 <?php
 
-namespace Touki\SnippetsGenerator\Command;
+namespace Touki\SnippetsGenerator\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Touki\SnippetsGenerator\Exception\InvalidArgumentException;
-use Touki\SnippetsGenerator\Generator\GetSetGenerator;
+use Touki\SnippetsGenerator\Generator\GetSet\GetSetGenerator;
 
-class GetSetCommand extends AbstractCommand
+class GetSetCommand extends Command
 {
     protected function configure()
     {

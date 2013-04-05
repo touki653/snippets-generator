@@ -2,7 +2,7 @@
 
 namespace Touki\SnippetsGenerator\Tests\Generator;
 
-use Touki\SnippetsGenerator\Generator\GetSetGenerator;
+use Touki\SnippetsGenerator\Generator\GetSet\GetSetGenerator;
 
 class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
 {

@@ -4,7 +4,7 @@ namespace Touki\SnippetsGenerator\Generator;
 
 use Symfony\Component\Config\Definition\Processor;
 
-abstract class AbstractGenerator
+abstract class Generator
 {
     protected $config;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Touki\SnippetsGenerator\Helper;
+namespace Touki\SnippetsGenerator\Console\Helper;
 
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Console\Output\OutputInterface;
