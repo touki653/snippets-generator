@@ -44,7 +44,7 @@ class PharGenerator extends Generator
         if (!empty($config['exclude'])) {
             $finder->exclude($config['exclude']);
         }
-       
+
         $phar = new \Phar($pharFile);
         $phar->setSignatureAlgorithm(\PHAR::SHA1);
         $phar->startBuffering();
@@ -65,6 +65,7 @@ class PharGenerator extends Generator
     private function getExecutable($executable)
     {
         $exec = file_get_contents($executable);
+
         return preg_replace('/'.preg_quote('#!/usr/bin/env php', '/').'\s*/is', '', $exec);
     }
 
