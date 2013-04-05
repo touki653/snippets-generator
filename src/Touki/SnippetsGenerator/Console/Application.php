@@ -6,6 +6,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 use Touki\SnippetsGenerator\Console\Helper\ImprovedDialogHelper;
 use Touki\SnippetsGenerator\Console\Command\GetSetCommand;
 use Touki\SnippetsGenerator\Console\Command\PharCommand;
+use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
 
 class Application extends BaseApplication
 {
@@ -17,7 +18,8 @@ class Application extends BaseApplication
 
         $commands = array(
             new GetSetCommand,
-            new PharCommand
+            new PharCommand,
+            new SelfCompileCommand
         );
 
         parent::__construct('PHP Snippets Generator', self::VERSION);

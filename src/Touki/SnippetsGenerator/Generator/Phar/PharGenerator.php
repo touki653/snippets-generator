@@ -28,6 +28,7 @@ class PharGenerator extends Generator
         }
 
         $pharFile = str_replace('.php', '.phar', $executable).'.phar';
+        $pharFilename = basename($pharFile);
 
         if (file_exists($pharFile)) {
             @unlink($pharFile);
@@ -53,7 +54,7 @@ class PharGenerator extends Generator
         }
 
         $phar->addFromString($executable, $this->getExecutable($executable));
-        $phar->setStub($this->getStub($pharFile, $executable));
+        $phar->setStub($this->getStub($pharFilename, $executable));
         $phar->stopBuffering();
 
         chmod($pharFile, 0777);
