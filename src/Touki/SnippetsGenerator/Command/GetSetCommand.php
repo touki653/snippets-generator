@@ -92,12 +92,12 @@ class GetSetCommand extends AbstractCommand
 
     private function generate(InputInterface $input)
     {
-        $config = array('getset' => array(
+        $config = array(
             'name' => $input->getOption('name'),
             'properties' => $input->getOption('prop'),
             'access' => $input->getOption('access'),
             'path' => getcwd()
-        ));
+        );
 
         $generator = new GetSetGenerator;
         $generator->setConfig($config);

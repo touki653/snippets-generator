@@ -36,10 +36,10 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
     {
         $generator = new GetSetGenerator;
 
-        $generator->setConfig(array('getset'=> array(
-            'access' => 'public',
-            'properties' => array('bar', 'baz')
-        )));
+        $generator->setConfig(array(
+                'access' => 'public',
+                'properties' => array('bar', 'baz')
+        ));
     }
 
     /**
@@ -50,10 +50,10 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
     {
         $generator = new GetSetGenerator;
 
-        $generator->setConfig(array('getset'=> array(
+        $generator->setConfig(array(
             'name' => 'foo',
             'access' => 'public'
-        )));
+        ));
     }
 
     /**
@@ -64,10 +64,10 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
     {
         $generator = new GetSetGenerator;
 
-        $generator->setConfig(array('getset'=> array(
+        $generator->setConfig(array(
             'name' => 'foo',
             'properties' => 'bar'
-        )));
+        ));
     }
 
     /**
@@ -78,11 +78,11 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
     {
         $generator = new GetSetGenerator;
 
-        $generator->setConfig(array('getset'=> array(
+        $generator->setConfig(array(
             'name' => 'foo',
             'properties' => array('bar', 'baz'),
             'access' => 'foobaz'
-        )));
+        ));
     }
 
     public function testConfigurationValidWithDefaultValues()
@@ -90,10 +90,8 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new GetSetGenerator;
 
         $config = array(
-            'getset'=> array(
-                'name' => 'foo',
-                'properties' => array('bar', 'baz')
-            )
+            'name' => 'foo',
+            'properties' => array('bar', 'baz')
         );
         $expect = array(
             'name' => 'foo',
@@ -112,11 +110,9 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new GetSetGenerator;
 
         $config = array(
-            'getset'=> array(
-                'name' => 'foo',
-                'properties' => array('bar', 'baz'),
-                'access' => 'public'
-            )
+            'name' => 'foo',
+            'properties' => array('bar', 'baz'),
+            'access' => 'public'
         );
         $expect = array(
             'name' => 'foo',
@@ -135,12 +131,10 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new GetSetGenerator;
 
         $config = array(
-            'getset'=> array(
-                'name' => 'foo',
-                'properties' => array('foo_baz', 'bar'),
-                'access' => 'protected',
-                'path' => __DIR__.'/../Fixtures/'
-            )
+            'name' => 'foo',
+            'properties' => array('foo_baz', 'bar'),
+            'access' => 'protected',
+            'path' => __DIR__.'/../Fixtures/'
         );
 
         $generator->setConfig($config);

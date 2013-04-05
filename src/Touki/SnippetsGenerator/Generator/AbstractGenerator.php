@@ -17,7 +17,7 @@ abstract class AbstractGenerator
         $processor = new Processor;
         $defaults = $this->getConfigurator();
 
-        $processed = $processor->processConfiguration($defaults, $config);
+        $processed = $processor->processConfiguration($defaults, array($config));
 
         $this->config = $processed;
     }
