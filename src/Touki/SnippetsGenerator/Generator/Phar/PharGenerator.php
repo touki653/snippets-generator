@@ -27,7 +27,7 @@ class PharGenerator extends Generator
             throw new InvalidArgumentException(sprintf("File '%s' could not be found", $executable));
         }
 
-        $pharFile = str_replace('.php', '.phar', $executable).'.phar';
+        $pharFile = str_replace('.php', '', $executable).'.phar';
         $pharFilename = basename($pharFile);
 
         if (file_exists($pharFile)) {
