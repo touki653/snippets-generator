@@ -7,11 +7,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ImprovedDialogHelper extends Helper
 {
+    /**
+     * Get helper name
+     *
+     * @return string impdialog
+     */
     public function getName()
     {
         return 'impdialog';
     }
 
+    /**
+     * Outputs a styled question and waits for user interaction
+     *
+     * @param OutputInterface $output       Where to ask
+     * @param string          $question     The given question
+     * @param string          $default      The default value
+     * @param array           $autocomplete List of avaible values
+     *
+     * @return mixed What user answered
+     */
     public function ask(OutputInterface $output, $question, $default = null, array $autocomplete = null)
     {
         if (!$default) {
@@ -23,6 +38,15 @@ class ImprovedDialogHelper extends Helper
         return $this->getHelperSet()->get('dialog')->ask($output, $question, $default, $autocomplete);
     }
 
+    /**
+     * Outputs a styled question which only accepts boolean values
+     *
+     * @param OutputInterface $output   Where to ask
+     * @param string          $question The given question
+     * @param boolean         $default  The default value
+     *
+     * @return boolean What user answered
+     */
     public function askConfirmation(OutputInterface $output, $question, $default = true)
     {
         $answer = 'z';

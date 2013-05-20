@@ -7,6 +7,9 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class GetSetConfiguration implements ConfigurationInterface
 {
+    /**
+     * {@inheritDoc}
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();

@@ -10,11 +10,17 @@ class GetSetGenerator extends Generator
 {
     private $template;
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getConfigurator()
     {
         return new GetSetConfiguration;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate()
     {
         if (null === $config = $this->getConfig()) {

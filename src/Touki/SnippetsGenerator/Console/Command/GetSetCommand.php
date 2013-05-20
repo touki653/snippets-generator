@@ -63,7 +63,7 @@ class GetSetCommand extends Command
     {
         $dialog = $this->getHelperSet()->get('impdialog');
 
-        $input->setOption('name', $dialog->ask($output, "Name of your property", $input->getOption('name')));
+        $input->setOption('name', $dialog->ask($output, "Name of your class", $input->getOption('name')));
 
         $input->setOption('access', $dialog->ask(
             $output,

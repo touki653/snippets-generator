@@ -10,11 +10,17 @@ use Symfony\Component\Finder\Finder;
 
 class PharGenerator extends Generator
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function getConfigurator()
     {
         return new PharConfiguration;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate()
     {
         if (null === $config = $this->getConfig()) {

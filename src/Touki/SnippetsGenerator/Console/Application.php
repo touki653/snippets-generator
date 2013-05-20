@@ -8,10 +8,16 @@ use Touki\SnippetsGenerator\Console\Command\GetSetCommand;
 use Touki\SnippetsGenerator\Console\Command\PharCommand;
 use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
 
+/**
+ * Improved application which initialize all commands
+ */
 class Application extends BaseApplication
 {
     const VERSION = '1.0';
 
+    /**
+     * Initialize snippets generator
+     */
     public function __construct()
     {
         error_reporting(E_ALL);
