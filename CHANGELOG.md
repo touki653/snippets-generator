@@ -1,5 +1,9 @@
 # Changelog
 
+### dev-master
+
+* Documentation fix
+
 ### 1.0.0
 
 Initial Release

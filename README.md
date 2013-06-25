@@ -132,7 +132,7 @@ Generates a phar archive of a project
 $ php snippets-generator.phar generate:phar [--file="..."] [-e|--exclude="..."]
 ```
 
-``̀sh
+```sh
 $ php snippets-generator.phar generate:phar
 Your existing executable filename (e.g bin/create.php): # Executable filename
 Do you want to exclude some files or directories ? [y]: # Whether to add excluded files/dirs
