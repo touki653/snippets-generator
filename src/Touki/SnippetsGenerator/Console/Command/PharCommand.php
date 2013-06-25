@@ -37,7 +37,7 @@ class PharCommand extends Command
             ->setDescription('Generates a PHP Archive of a given executable file')
             ->setDefinition(array(
                 new InputOption('file', '', InputOption::VALUE_REQUIRED, 'The path to the executable file'),
-                new InputOption('exclude', '', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Exclude files/directories'),
+                new InputOption('exclude', 'e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Exclude files/directories'),
             ))
         ;
     }

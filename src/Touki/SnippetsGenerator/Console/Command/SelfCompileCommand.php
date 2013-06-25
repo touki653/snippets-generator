@@ -72,7 +72,7 @@ class SelfCompileCommand extends Command
 
         $generator->setConfig(array(
             'executable' => 'bin/snippets-generator',
-            'exclude'    => array('Tests'),
+            'exclude'    => array('Tests', 'composer.json', 'composer.lock', 'phpunit.xml', 'phpunit.xml.dist'),
             'path'       => getcwd()
         ));
 
