@@ -6,6 +6,13 @@ use Touki\SnippetsGenerator\Generator\Phar\PharGenerator;
 
 class PharGeneratorTest extends \PHPUnit_Framework_TestCase
 {
+    protected $generator;
+
+    public function setUp()
+    {
+        $this->generator = new PharGenerator;
+    }
+
     /**
      * @expectedException Touki\SnippetsGenerator\Exception\BadMethodCallException
      * @expectedExceptionMessage Cannot generate phar, configuration has not been set
@@ -23,7 +30,7 @@ class PharGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationEmpty()
     {
-        $generator = new PharGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array());
     }
@@ -38,7 +45,7 @@ class PharGeneratorTest extends \PHPUnit_Framework_TestCase
             'path' => getcwd()
         );
 
-        $generator = new PharGenerator;
+        $generator = $this->generator;
         $generator->setConfig($config);
     }
 
@@ -52,7 +59,7 @@ class PharGeneratorTest extends \PHPUnit_Framework_TestCase
             'executable' => 'foo'
         );
 
-        $generator = new PharGenerator;
+        $generator = $this->generator;
         $generator->setConfig($config);
     }
 
@@ -68,11 +75,9 @@ class PharGeneratorTest extends \PHPUnit_Framework_TestCase
             'exclude' => array()
         );
 
-        $generator = new PharGenerator;
+        $generator = $this->generator;
         $generator->setConfig($config);
 
         $this->assertEquals($generator->getConfig(), $expects);
-
-        $generator->generate();
     }
 }

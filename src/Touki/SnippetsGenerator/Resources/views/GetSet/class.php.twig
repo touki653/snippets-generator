@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * {{ name|title }}
+ */
+class {{ name|title }}
+{
+{% for property in properties %}
+    /**
+     * {{ property|title }}
+     * @var [type]
+     */
+    {{ access }} ${{ property }};
+
+{% endfor %}
+{% for property in properties %}
+{% if not loop.first %}{# Extra space when not the first one #}
+
+{% endif %}
+    /**
+     * Get {{ property|title }}
+     *
+     * @return [type]
+     */
+    public function get{{ property|title }}()
+    {
+        return $this->{{property}};
+    }
+
+    /**
+     * Set {{ property|title }}
+     *
+     * @param  [type] ${{ property }} A new {{ property }}
+     * @return {{ name|title }}
+     */
+    public function set{{ property|title }}(${{ property }})
+    {
+        $this->{{ property }} = ${{ property }};
+
+        return $this;
+    }
+{% endfor %}
+}

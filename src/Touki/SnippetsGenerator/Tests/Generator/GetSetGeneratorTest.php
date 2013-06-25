@@ -6,13 +6,20 @@ use Touki\SnippetsGenerator\Generator\GetSet\GetSetGenerator;
 
 class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
 {
+    protected $generator;
+
+    public function setUp()
+    {
+        $this->generator = new GetSetGenerator;
+    }
+
     /**
      * @expectedException Touki\SnippetsGenerator\Exception\BadMethodCallException
      * @expectedExceptionMessage Cannot generate getset, configuration has not been set
      */
     public function testNoConfiguration()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->generate();
     }
@@ -23,7 +30,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationEmpty()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array());
     }
@@ -34,7 +41,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationNoName()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array(
                 'access' => 'public',
@@ -48,7 +55,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationNoProperties()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array(
             'name' => 'foo',
@@ -62,7 +69,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationNoArrayProperties()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array(
             'name' => 'foo',
@@ -76,7 +83,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigurationInvalidEnum()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $generator->setConfig(array(
             'name' => 'foo',
@@ -87,7 +94,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testConfigurationValidWithDefaultValues()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $config = array(
             'name' => 'foo',
@@ -107,7 +114,7 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testConfigurationValidWithGivenValues()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $config = array(
             'name' => 'foo',
@@ -128,11 +135,11 @@ class GetSetGeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateGetset()
     {
-        $generator = new GetSetGenerator;
+        $generator = $this->generator;
 
         $config = array(
             'name' => 'foo',
-            'properties' => array('foo_baz', 'bar'),
+            'properties' => array('bar', 'baz'),
             'access' => 'protected',
             'path' => __DIR__.'/../Fixtures/'
         );

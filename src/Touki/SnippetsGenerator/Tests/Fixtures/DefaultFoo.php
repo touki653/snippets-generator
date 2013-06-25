@@ -1,31 +1,64 @@
 <?php
 
+/**
+ * Foo
+ */
 class Foo
 {
-    protected $foo_baz;
-
+    /**
+     * Bar
+     * @var [type]
+     */
     protected $bar;
 
-    public function getFooBaz()
-    {
-        return $this->foo_baz;
-    }
+    /**
+     * Baz
+     * @var [type]
+     */
+    protected $baz;
 
-    public function setFooBaz($foo_baz)
-    {
-        $this->foo_baz = $foo_baz;
-
-        return $this;
-    }
-
+    /**
+     * Get Bar
+     *
+     * @return [type]
+     */
     public function getBar()
     {
         return $this->bar;
     }
 
+    /**
+     * Set Bar
+     *
+     * @param  [type] $bar A new bar
+     * @return Foo
+     */
     public function setBar($bar)
     {
         $this->bar = $bar;
+
+        return $this;
+    }
+
+    /**
+     * Get Baz
+     *
+     * @return [type]
+     */
+    public function getBaz()
+    {
+        return $this->baz;
+    }
+
+    /**
+     * Set Baz
+     *
+     * @param  [type] $baz A new baz
+     * @return Foo
+     */
+    public function setBaz($baz)
+    {
+        $this->baz = $baz;
 
         return $this;
     }

@@ -98,14 +98,16 @@ abstract class Generator
     /**
      * Renders a twig file
      *
-     * @param string $skeletonDir Where to find tempalte
      * @param string $template    Template name
      * @param array  $parameters  Parameters for the Twig template
+     * @param string $skeletonDir Where to find template
      *
      * @return string The rendered template
      */
-    protected function render($skeletonDir, $template, $parameters)
+    protected function render($template, $parameters, $skeletonDir = null)
     {
+        $skeletonDir = $skeletonDir ?: $this->getSkeletonDir();
+
         $twig = new \Twig_Environment(new \Twig_Loader_Filesystem($skeletonDir), array(
             'debug'            => true,
             'cache'            => false,
@@ -119,19 +121,29 @@ abstract class Generator
     /**
      * Renders a file
      *
-     * @param string $skeletonDir Where to find template
      * @param string $template    Template name
      * @param string $target      Target file
      * @param array  $parameters  Parameters for the Twig template
+     * @param string $skeletonDir Where to find template
      *
      * @return integer|boolean How much bytes have been written. False on failure
      */
-    protected function renderFile($skeletonDir, $template, $target, $parameters)
+    protected function renderFile($template, $target, $parameters, $skeletonDir = null)
     {
         if (!is_dir(dirname($target))) {
             mkdir(dirname($target), 0777, true);
         }
 
-        return file_put_contents($target, $this->render($skeletonDir, $template, $parameters));
+        return file_put_contents($target, $this->render($template, $parameters, $skeletonDir));
+    }
+
+    /**
+     * Returns the default skeleton dir
+     *
+     * @return string Views location
+     */
+    protected function getSkeletonDir()
+    {
+        return __DIR__.'/../Resources/views';
     }
 }
