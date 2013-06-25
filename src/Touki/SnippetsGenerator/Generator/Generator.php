@@ -36,6 +36,15 @@ abstract class Generator
     abstract public function generate();
 
     /**
+     * Function called after processed configuration
+     *
+     * @param array $config Processed configuration
+     */
+    public function build(array $config = array())
+    {
+    }
+
+    /**
      * Set configuration
      * This is a proxy method, which calls the default configurator tree defined in generator configuration class
      *
@@ -51,6 +60,8 @@ abstract class Generator
         $processed = $processor->processConfiguration($defaults, array($config));
 
         $this->config = $processed;
+
+        $this->build($this->config);
     }
 
     /**

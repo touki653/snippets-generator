@@ -13,8 +13,6 @@ use Touki\SnippetsGenerator\Exception\BadMethodCallException;
  */
 class GetSetGenerator extends Generator
 {
-    private $template;
-
     /**
      * {@inheritDoc}
      */
@@ -32,7 +30,7 @@ class GetSetGenerator extends Generator
             throw new BadMethodCallException("Cannot generate getset, configuration has not been set");
         }
 
-        $path = rtrim($config['path'], DIRECTORY_SEPARATOR);
+        $path     = rtrim($config['path'], DIRECTORY_SEPARATOR);
         $filename = sprintf("%s/%s.php", $path, $config['name']);
         $this->renderFile('GetSet/class.php.twig', $filename, $config);
 

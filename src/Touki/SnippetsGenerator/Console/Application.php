@@ -7,6 +7,7 @@ use Touki\SnippetsGenerator\Console\Helper\ImprovedDialogHelper;
 use Touki\SnippetsGenerator\Console\Command\GetSetCommand;
 use Touki\SnippetsGenerator\Console\Command\PharCommand;
 use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
+use Touki\SnippetsGenerator\Console\Command\CommentPackageCommand;
 
 /**
  * Improved application which initialize all commands
@@ -27,7 +28,8 @@ class Application extends BaseApplication
         $commands = array(
             new GetSetCommand,
             new PharCommand,
-            new SelfCompileCommand
+            new SelfCompileCommand,
+            new CommentPackageCommand
         );
 
         parent::__construct('PHP Snippets Generator', self::VERSION);
