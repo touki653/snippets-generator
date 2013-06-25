@@ -6,6 +6,34 @@ PHP Snippets Generator is a Phar archive which helps you to rapidly create commo
 
 ## Installation
 
+Installing snippets-generator is easy.  
+From a terminal you can
+
+```sh
+$ wget -O snippets-generator.phar https://github.com/touki653/snippets-generator/blob/master/bin/snippets-generator.phar?raw=true
+```
+
+You can at any time match a different version just by changing `master` to `version`.  
+Example:
+
+```sh
+$ wget -O snippets-generator.phar https://github.com/touki653/snippets-generator/blob/v1.0.0/bin/snippets-generator.phar?raw=true
+```
+
+Make it executable by running
+
+```sh
+$ chmod +x snippets-generator.phar
+```
+
+From now you can run `snippets-generator.phar` and access every commands.
+
+However, we suggest you to make it globally accessible. So you can call `snippets-generator.phar` from anywhere on your computer
+
+```sh
+$ sudo mv snippets-generator.phar /usr/local/bin/snippets-generator.phar
+```
+
 ## Features
 
 ### Generate:GetSet
