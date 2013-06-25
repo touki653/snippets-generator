@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * This file is a part of the Snippets Generator package
+ *
+ * For the full informations, please read the README file
+ * distributed with this package
+ *
+ * @package Snippets Generator
+ * @version 1.0.0
+ * @author  Touki <g.vincendon@vithemis.com>
+ */
+
 namespace Touki\SnippetsGenerator\Generator\CommentPackage;
 
 use Symfony\Component\Finder\Finder;
@@ -61,6 +72,11 @@ class CommentPackageGenerator extends Generator
             ->in($config['path'])
             ->name('*.php')
         ;
+
+        if (!empty($config['exclude'])) {
+            $finder->exclude($config['exclude']);
+        }
+
         $docblock = $this->getTemplate($config);
 
         foreach ($finder as $file) {
@@ -105,13 +121,10 @@ class CommentPackageGenerator extends Generator
      */
     private function getTemplate(array $config = array())
     {
-        return $config['template'] != 'default'
-            ? $this->render($config['template'], $config, $config['path'])
-            : $this->render('CommentPackage/default-license.php.twig', $config)
-        ;
+        return $this->render(sprintf('CommentPackage/%s.php.twig', $config['template']), $config);
     }
 
-        /**
+    /**
      * Removes the doc comments
      *
      * @access private

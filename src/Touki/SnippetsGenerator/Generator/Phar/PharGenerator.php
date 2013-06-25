@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * This file is a part of the Snippets Generator package
+ *
+ * For the full informations, please read the README file
+ * distributed with this package
+ *
+ * @package Snippets Generator
+ * @version 1.0.0
+ * @author  Touki <g.vincendon@vithemis.com>
+ */
+
 namespace Touki\SnippetsGenerator\Generator\Phar;
 
 use Touki\SnippetsGenerator\Generator\Generator;
@@ -43,7 +54,6 @@ class PharGenerator extends Generator
         $finder = new Finder;
         $finder
             ->files()
-            ->name('*.php')
             ->in($config['path'])
         ;
 

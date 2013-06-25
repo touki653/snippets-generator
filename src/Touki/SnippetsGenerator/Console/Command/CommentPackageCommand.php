@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * This file is a part of the Snippets Generator package
+ *
+ * For the full informations, please read the README file
+ * distributed with this package
+ *
+ * @package Snippets Generator
+ * @version 1.0.0
+ * @author  Touki <g.vincendon@vithemis.com>
+ */
+
 namespace Touki\SnippetsGenerator\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -7,6 +18,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
 use Touki\SnippetsGenerator\Exception\InvalidArgumentException;
 use Touki\SnippetsGenerator\Generator\CommentPackage\CommentPackageGenerator;
 
@@ -26,12 +38,15 @@ class CommentPackageCommand extends Command
             ->setName('generate:comment-package')
             ->setDescription('Generates a file-level doc comment in each php files')
             ->setDefinition(array(
-                new InputOption('dir',      '', InputOption::VALUE_REQUIRED, 'The directory to traverse'),
+                new InputOption('dir',      '', InputOption::VALUE_REQUIRED, 'The directory to traverse', '.'),
                 new InputOption('template', '', InputOption::VALUE_REQUIRED, 'The template to use', 'default'),
                 new InputOption('package',  '', InputOption::VALUE_REQUIRED, 'The package name', basename(getcwd())),
                 new InputOption('ver',      '', InputOption::VALUE_REQUIRED, 'The package version', '1.0.0'),
                 new InputOption('name',     '', InputOption::VALUE_REQUIRED, 'Your name'),
                 new InputOption('email',    '', InputOption::VALUE_REQUIRED, 'Your email'),
+                new InputOption('exclude', 'e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Exclude files/directories'),
+
+                new InputOption('templates', '', InputOption::VALUE_NONE,     'Lists the default templates'),
             ))
         ;
     }
@@ -41,8 +56,23 @@ class CommentPackageCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        if ($input->getOption('templates')) {
+            $output->writeln(array(
+                '',
+                '<info>Available templates :</info>',
+                sprintf("<comment>%s</comment>", implode("</comment>, <comment>", $this->getTemplates())),
+                ''
+            ));
+
+            return;
+        }
+
         if (!$input->getOption('dir')) {
             throw new InvalidArgumentException("You must specify a directory");
+        }
+
+        if (!in_array($input->getOption('template'), $this->getTemplates())) {
+            throw new InvalidArgumentException(sprintf("Could not find template %s", $input->getOption('template')));
         }
 
         $output->writeln(array(
@@ -64,7 +94,7 @@ class CommentPackageCommand extends Command
 
         $output->writeln(array(
             '',
-            sprintf(' > All comment were generated', $this->generate($input)),
+            sprintf(' > All comments were generated', $this->generate($input)),
             ''
         ));
     }
@@ -74,6 +104,10 @@ class CommentPackageCommand extends Command
      */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
+        if ($input->getOption('templates')) {
+            return;
+        }
+
         $dialog = $this->getHelperSet()->get('impdialog');
 
         $input->setOption('dir', $dialog->ask(
@@ -85,7 +119,8 @@ class CommentPackageCommand extends Command
         $input->setOption('template', $dialog->ask(
             $output,
             "Which template to use",
-            $input->getOption('template')
+            $input->getOption('template'),
+            $this->getTemplates()
         ));
 
         $input->setOption('package', $dialog->ask(
@@ -125,6 +160,7 @@ class CommentPackageCommand extends Command
 
         $generator->setConfig(array(
             "path"     => sprintf("%s/%s", getcwd(), $input->getOption('dir')),
+            "exclude"  => $input->getOption('exclude'),
             "template" => $input->getOption('template'),
             "package"  => $input->getOption('package'),
             "version"  => $input->getOption('ver'),
@@ -133,5 +169,26 @@ class CommentPackageCommand extends Command
         ));
 
         return $generator->generate();
+    }
+
+    /**
+     * Returns template names
+     *
+     * @return array
+     */
+    private function getTemplates()
+    {
+        $finder = new Finder;
+        $finder
+            ->files()
+            ->in(__DIR__.'/../../Resources/views/CommentPackage')
+        ;
+
+        return array_map(
+            function($file) {
+                return $file->getBasename('.php.twig');
+            },
+            iterator_to_array($finder)
+        );
     }
 }

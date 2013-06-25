@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * This file is a part of the Snippets Generator package
+ *
+ * For the full informations, please read the README file
+ * distributed with this package
+ *
+ * @package Snippets Generator
+ * @version 1.0.0
+ * @author  Touki <g.vincendon@vithemis.com>
+ */
+
 namespace Touki\SnippetsGenerator\Console;
 
 use Symfony\Component\Console\Application as BaseApplication;
@@ -8,6 +19,7 @@ use Touki\SnippetsGenerator\Console\Command\GetSetCommand;
 use Touki\SnippetsGenerator\Console\Command\PharCommand;
 use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
 use Touki\SnippetsGenerator\Console\Command\CommentPackageCommand;
+use Touki\SnippetsGenerator\Console\Command\SelfCommentCommand;
 
 /**
  * Improved application which initialize all commands
@@ -16,7 +28,7 @@ use Touki\SnippetsGenerator\Console\Command\CommentPackageCommand;
  */
 class Application extends BaseApplication
 {
-    const VERSION = '1.0';
+    const VERSION = '1.0.0';
 
     /**
      * Initialize snippets generator
@@ -29,7 +41,8 @@ class Application extends BaseApplication
             new GetSetCommand,
             new PharCommand,
             new SelfCompileCommand,
-            new CommentPackageCommand
+            new CommentPackageCommand,
+            new SelfCommentCommand,
         );
 
         parent::__construct('PHP Snippets Generator', self::VERSION);
