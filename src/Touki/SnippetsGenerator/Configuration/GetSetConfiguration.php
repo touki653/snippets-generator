@@ -5,6 +5,11 @@ namespace Touki\SnippetsGenerator\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * GetSet Generator default configuration
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 class GetSetConfiguration implements ConfigurationInterface
 {
     /**

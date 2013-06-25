@@ -7,8 +7,16 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Touki\SnippetsGenerator\Generator\Phar\PharGenerator;
 
+/**
+ * Self Compile Command
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 class SelfCompileCommand extends Command
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function configure()
     {
         $this
@@ -17,6 +25,9 @@ class SelfCompileCommand extends Command
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if ($input->isInteractive()) {
@@ -27,16 +38,24 @@ class SelfCompileCommand extends Command
 
         $output->writeln(array(
             '',
-            sprintf(' > Created archive <comment>%s</comment>', $this->generate($input)),
+            sprintf(' > Created archive <comment>%s</comment>', $this->generate()),
             ''
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
     }
 
-    private function generate(InputInterface $input)
+    /**
+     * Generates the phar command based on input options
+     *
+     * @return string The generated filename
+     */
+    private function generate()
     {
         $generator = new PharGenerator;
 

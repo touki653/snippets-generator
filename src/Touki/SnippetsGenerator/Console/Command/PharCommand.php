@@ -9,8 +9,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Touki\SnippetsGenerator\Exception\InvalidArgumentException;
 use Touki\SnippetsGenerator\Generator\Phar\PharGenerator;
 
+/**
+ * Phar Command
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 class PharCommand extends Command
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function configure()
     {
         $this
@@ -23,6 +31,9 @@ class PharCommand extends Command
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getOption('file')) {
@@ -50,6 +61,9 @@ class PharCommand extends Command
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $dialog = $this->getHelperSet()->get('impdialog');
@@ -75,6 +89,12 @@ class PharCommand extends Command
         $input->setOption('exclude', $exclude);
     }
 
+    /**
+     * Generates the phar command based on input options
+     *
+     * @param  InputInterface $input An Input instance
+     * @return string         The generated filename
+     */
     private function generate(InputInterface $input)
     {
         $generator = new PharGenerator;

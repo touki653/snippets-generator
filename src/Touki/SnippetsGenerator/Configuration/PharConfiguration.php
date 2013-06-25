@@ -5,6 +5,11 @@ namespace Touki\SnippetsGenerator\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * Phar Generator default configuration
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 class PharConfiguration implements ConfigurationInterface
 {
     /**

@@ -10,6 +10,8 @@ use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
 
 /**
  * Improved application which initialize all commands
+ *
+ * @author Touki <g.vincendon@vithemis.com>
  */
 class Application extends BaseApplication
 {

@@ -9,8 +9,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Touki\SnippetsGenerator\Exception\InvalidArgumentException;
 use Touki\SnippetsGenerator\Generator\GetSet\GetSetGenerator;
 
+/**
+ * GetSet Command
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 class GetSetCommand extends Command
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function configure()
     {
         $this
@@ -24,6 +32,9 @@ class GetSetCommand extends Command
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getOption('name')) {
@@ -59,6 +70,9 @@ class GetSetCommand extends Command
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $dialog = $this->getHelperSet()->get('impdialog');
@@ -90,6 +104,12 @@ class GetSetCommand extends Command
         $input->setOption('prop', $properties);
     }
 
+    /**
+     * Generates the GetSet based on input options
+     *
+     * @param  InputInterface $input An Input instance
+     * @return string         Generated filename
+     */
     private function generate(InputInterface $input)
     {
         $config = array(

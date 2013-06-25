@@ -5,6 +5,11 @@ namespace Touki\SnippetsGenerator\Generator;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/**
+ * Base class for Generators
+ *
+ * @author Touki <g.vincendon@vithemis.com>
+ */
 abstract class Generator
 {
     /**
@@ -38,7 +43,7 @@ abstract class Generator
      *
      * @return void
      */
-    public function setConfiguration(Array $config)
+    public function setConfiguration(array $config)
     {
         $processor = new Processor;
         $defaults = $this->getConfigurator();
@@ -53,7 +58,7 @@ abstract class Generator
      *
      * @param array $config User configuration
      */
-    public function setConfig(Array $config)
+    public function setConfig(array $config)
     {
         return $this->setConfiguration($config);
     }
