@@ -20,6 +20,7 @@ use Touki\SnippetsGenerator\Console\Command\PharCommand;
 use Touki\SnippetsGenerator\Console\Command\SelfCompileCommand;
 use Touki\SnippetsGenerator\Console\Command\CommentPackageCommand;
 use Touki\SnippetsGenerator\Console\Command\SelfCommentCommand;
+use Touki\SnippetsGenerator\Console\Command\Struct;
 
 /**
  * Improved application which initialize all commands
@@ -43,6 +44,7 @@ class Application extends BaseApplication
             new SelfCompileCommand,
             new CommentPackageCommand,
             new SelfCommentCommand,
+            new Struct
         );
 
         parent::__construct('PHP Snippets Generator', self::VERSION);

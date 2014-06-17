@@ -1,14 +1,12 @@
 # Changelog
 
-### dev-master
+dev-master
+----------
 
-* Documentation fix
-* Added installation documentation
+ * Documentation fix
+ * Added installation documentation
 
-### 1.0.0
+1.0.0
+-----
 
-Initial Release
-
-* Generate GetSet
-* Generate Phar
-* Generate Comment Package
+ * Initial release

@@ -1,0 +1,43 @@
+<?php
+
+{% for use in uses %}
+use {{ use }};
+{% endfor %}
+
+class {{ name|ucfirst }}
+{
+{% for property in properties %}
+    /**
+     * {{ property.name|ucfirst }}
+     * @var {{ property.type }}
+     */
+    protected ${{ property.name }};
+
+{% endfor %}
+{% for property in properties %}
+    /**
+     * Get {{ property.name|ucfirst }}
+     *
+     * @return {{ property.type }}
+     */
+    public function get{{ property.name|ucfirst }}()
+    {
+        return $this->{{ property.name }};
+    }
+
+    /**
+     * Set {{ property.name|ucfirst }}
+     *
+     * @param {{ property.type }} ${{ property.name }} {{ property.name|ucfirst }}
+     */
+    public function set{{ property.name|ucfirst }}({{ property.hint ? property.hint~' ' }}${{ property.name }})
+    {
+        $this->{{ property.name }} = ${{ property.name }};
+
+        return $this;
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}
